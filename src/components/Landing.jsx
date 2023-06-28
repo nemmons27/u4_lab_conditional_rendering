@@ -1,5 +1,6 @@
 const Landing = (props) => {
   // props have already been passed into this component for us here ^^, but have we passed any properties to this component yet?
+
   
   return (
     <div>

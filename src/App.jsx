@@ -1,11 +1,22 @@
 import './styles/App.css'
 import { useState } from 'react'
 import Home from './components/Home'
+import Thanks from './components/Thanks'
+import Error from './components/Error'
+
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(0)
   const [formValues, setFormValues] = useState({ name: '', age: '', email: '' })
 
+  const over18 = () => {
+    if (age < 18) {
+      return <Error />
+    }
+    else {
+      return <Thanks />
+    }
+  }
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
     // Uses bracket notation to access a key in state that is a match to the input's name and sets it to the input's value
@@ -14,8 +25,10 @@ const App = () => {
 
   const incrementPage = () => {
     setCurrentPage((prevState) => prevState + 1)
-    // Already does what you need it to, just have to hook it up to your buttons with an onClick
-    // If you decide to make a function for going BACK (bonus), maybe make it do the opposite of this?
+  }
+
+  const reducePage = () => {
+    setCurrentPage((prevState) => prevState - 1)
   }
 
   return (
@@ -26,6 +39,7 @@ const App = () => {
         age={formValues.age}
         email={formValues.email}
         incrementPage={incrementPage}
+        reducePage={reducePage}
         handleChange={handleChange}
       />
     </div>

@@ -1,4 +1,4 @@
-const Thanks = () => {
+const Thanks = (props) => {
   // Don't forget to pass props above ^^ if you need them!
 
   return (
@@ -10,7 +10,7 @@ const Thanks = () => {
       />
       <br></br>
       <br></br>
-      <button>Back</button>
+      <button onClick={props.reducePage}>Back</button>
       {/* Don't forget to hook up an onClick property for this ^^ button if you want it to work! */}
     </div>
   )
